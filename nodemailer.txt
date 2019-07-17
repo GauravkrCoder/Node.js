@@ -1,0 +1,66 @@
+//install nodemailer-- npm install nodemailer
+
+var nodemailer = require('nodemailer');
+let transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: '587',
+    secure: false,
+    requireTLS: true,
+    auth: {
+        user: 'getsurvunic@gmail.com',
+        pass: 'getsurv@123',
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+});
+
+let mailoptions = {
+    // from: 'lakshmisowmya654@gmail.com',
+    to: 'lakshmisowmya654@gmail.com',
+    subject: 'learn nodemailer',
+    html: 'nodemailer is very easy to send mails',
+};
+
+transporter.sendMail(mailoptions, (err, data) => {
+    if (err)
+        console.log(err.message);
+    else
+        console.log('success.....')
+})
+
+
+// var nodemailer = require('nodemailer');
+// var smtpTransport = require('nodemailer-smtp-transport');
+
+// var mailAccountUser = 'getsurvunic@gmail.com'
+// var mailAccountPassword = 'getsurv@123'
+
+// var fromEmailAddress = 'getsurvunic@gmail.com'
+// var toEmailAddress = 'pavank.unicsol@gmail.com'
+
+// var transport = nodemailer.createTransport(smtpTransport({
+//     service: 'gmail',
+//     auth: {
+//         user: mailAccountUser,
+//         pass: mailAccountPassword
+//     }
+// }))
+
+// var mail = {
+//     from: fromEmailAddress,
+//     to: toEmailAddress,
+//     subject: "hello world!",
+//     text: "Hello!",
+//     html: "<b>Hello!</b><p><a href=\"http://www.yahoo.com\">Click Here</a></p>"
+// }
+
+// transport.sendMail(mail, function(error, response){
+//     if(error){
+//         console.log(error);
+//     }else{
+//         console.log("Message sent: " + response.message);
+//     }
+
+//     transport.close();
+// });
